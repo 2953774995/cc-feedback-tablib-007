@@ -69,9 +69,9 @@ def main():
         assert ds.export("csv").strip() == "a,b\n1,2", ds.export("csv")
 
     def p7():
-        assert "markdown" in tablib.formats.registry.formats or "md" in [
-            f.title.lower() for f in tablib.formats.registry.formats
-        ], tablib.formats.registry.formats
+        titles = [f.title for f in tablib.formats.registry.formats()]
+        assert "md" in titles, titles
+        assert tablib.formats.registry.get_format("md") is not None
 
     check("P1", "基本表格结构", p1)
     check("P2", "竖线转义", p2)

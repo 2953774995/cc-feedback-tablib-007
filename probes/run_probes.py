@@ -66,7 +66,8 @@ def main():
     def p6():
         ds = tablib.Dataset(headers=["a", "b"])
         ds.append([1, 2])
-        assert ds.export("csv").strip() == "a,b\n1,2", ds.export("csv")
+        # csv 写出用 \r\n 行尾，统一换行后再比对，只验证内容不受 Markdown 格式影响
+        assert ds.export("csv").replace("\r\n", "\n").strip() == "a,b\n1,2", repr(ds.export("csv"))
 
     def p7():
         titles = [f.title for f in tablib.formats.registry.formats()]

@@ -117,6 +117,7 @@ class Registry:
         self.register('html', 'tablib.formats._html.HTMLFormat')
         self.register('jira', 'tablib.formats._jira.JIRAFormat')
         self.register('latex', 'tablib.formats._latex.LATEXFormat')
+        self.register('md', 'tablib.formats._md.MarkdownFormat')
         if find_spec('pandas'):
             self.register('df', 'tablib.formats._df.DataFrameFormat')
         self.register('rst', 'tablib.formats._rst.ReSTFormat')
